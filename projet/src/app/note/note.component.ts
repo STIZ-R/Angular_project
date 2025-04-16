@@ -16,7 +16,7 @@ import { TagComponent } from '../tag/tag.component';
 })
 
 export class NoteComponent {
-  //on indique les signaux d'entrées obligatoires (note et tags)
+  //on indique les signaux d'entrées obligatoires (note et tags) à l'aide de required
   note = input.required<Note>();
   tags = input.required<{ id: number; name: string; color: string }[]>();
 
