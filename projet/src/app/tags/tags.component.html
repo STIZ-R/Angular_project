@@ -1,0 +1,30 @@
+<div class="tags-container">
+  <h2>Gestion des Tags</h2>
+
+  <a (click)="startAddTag()">Ajouter une nouvelle étiquette</a>
+
+  @if (editing) {
+  <form (ngSubmit)="saveTag()" class="tag-form">
+    <label>
+      Nom :
+      <input type="text" name="name" [(ngModel)]="editing.name" required />
+    </label>
+    <label>
+      Couleur :
+      <input type="color" name="color" [(ngModel)]="editing.color" />
+    </label>
+    <button type="submit">Valider</button>
+    <button type="button" (click)="cancelEdit()">Annuler</button>
+  </form>
+  }
+
+  <ul>
+    @for (tag of tags; track tag.id) {
+    <li>
+      <app-tag [id]="tag.id" [name]="tag.name" [color]="tag.color" (click)="startEditTag($event)" (doubleClick)="removeTag($event)"></app-tag>
+    </li>
+    } @empty {
+    <li>Aucun tag !</li>
+    }
+  </ul>
+</div>

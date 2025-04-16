@@ -1,0 +1,165 @@
+.main-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.notes-section {
+  flex: 3;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+  flex: 2;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.note-container {
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.note-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid #333; /* Contour */
+  border-radius: 12px;
+  font-size: 12px;
+  color: #fff; /* Texte blanc pour contraste */
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3); /* Ombre légère pour lisibilité */
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+}
+
+p {
+  margin: 0 0 10px 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+input,
+textarea,
+select {
+  display: block;
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+select[multiple] {
+  height: 100px;
+}
+
+.new-tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.new-tag-container input[type="color"] {
+  width: 50px;
+  padding: 0;
+}
+
+.new-tag-container button {
+  background-color: #4caf50;
+}
+
+.new-tag-container button:hover {
+  background-color: #388e3c;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+button {
+  padding: 8px 16px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button[type="submit"] {
+  background-color: #2196f3;
+}
+
+button[type="submit"]:hover {
+  background-color: #1976d2;
+}
+
+button.cancel {
+  background-color: #757575;
+}
+
+button.cancel:hover {
+  background-color: #616161;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .notes-section,
+  .form-section {
+    flex: 1;
+    width: 100%;
+  }
+}

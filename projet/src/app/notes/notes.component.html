@@ -1,0 +1,62 @@
+<div class="main-container">
+  <div class="notes-section">
+    <h2>Mes Notes</h2>
+    <div class="search-container">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        (input)="filterNotes()"
+        placeholder="Rechercher par titre, contenu ou tags..."
+      />
+      <button (click)="sortNotes()">Trier</button>
+    </div>
+
+    @for (note of filteredNotes; track note.id) {
+    <app-note [note]="note" [tags]="tags" (click)="editNote($event)" (doubleClick)="deleteNote($event)"></app-note>
+    }
+  </div>
+
+  <div class="form-section">
+    <h2>{{ editingNote ? 'Modifier la note' : 'Créer une note' }}</h2>
+    <form (ngSubmit)="editingNote ? updateNote() : createNote()">
+      <div class="form-group">
+        <label for="title">Titre :</label>
+        <input [(ngModel)]="newNoteTitle" name="title" id="title" placeholder="Titre" required />
+      </div>
+
+      <div class="form-group">
+        <label for="color">Couleur :</label>
+        <input type="color" [(ngModel)]="newNoteColor" name="color" id="color" />
+      </div>
+
+      <div class="form-group">
+        <label for="content">Contenu :</label>
+        <textarea [(ngModel)]="newNoteContent" name="content" id="content" placeholder="Contenu"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="tags">Sélectionner des tags :</label>
+        <select multiple [(ngModel)]="selectedTagIds" name="tags" id="tags">
+          @for (tag of tags; track tag.id) {
+          <option [value]="tag.id">{{ tag.name }} ({{ tag.color }})</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group new-tag-container">
+        <label for="newTagName">Créer un nouveau tag :</label>
+        <input [(ngModel)]="newTagName" name="newTagName" id="newTagName" placeholder="Nom du tag" />
+        <input type="color" [(ngModel)]="newTagColor" name="newTagColor" />
+        <button type="button" (click)="createTag()">Ajouter le tag</button>
+        @if (tagError) {
+        <div class="error">{{ tagError }}</div>
+        }
+      </div>
+
+      <button type="submit">{{ editingNote ? 'Mettre à jour' : 'Créer la note' }}</button>
+      @if (editingNote) {
+      <button type="button" class="cancel" (click)="cancelEdit()">Annuler</button>
+      }
+    </form>
+  </div>
+</div>

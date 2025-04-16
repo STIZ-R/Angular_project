@@ -1,0 +1,13 @@
+<!--cet élément est cliquable et gère le dbl click ou le simple (voir dans .ts)-->
+<!--on utilise biensûr les @for et les @if et non pas les *ngFor,...-->
+<div class="note-container" [style.backgroundColor]="note().backgroundColor" (click)="onClick()" (dblclick)="onDoubleClick()">
+    <h3>{{ note().title }}</h3>
+    <p>{{ note().content }}</p>
+  <div class="tags-container">
+    @for (tagId of note().tagIds; track tagId) {
+          @if (getTagById(tagId); as tag) {
+          <app-tag [id]="tag.id" [name]="tag.name" [color]="tag.color"></app-tag>
+          }
+    }
+  </div>
+</div>
