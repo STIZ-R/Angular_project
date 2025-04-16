@@ -15,20 +15,30 @@ import { NoteComponent } from '../note/note.component';
 })
 
 export class NotesComponent implements OnInit {
+  //main données
   notes: Note[] = [];
   filteredNotes: Note[] = [];
   tags: Tag[] = [];
+  searchQuery = '';
+  isSorted = false;
+
+  //pour les notes
   newNoteTitle = '';
   newNoteColor = '#FFFFFF';
   newNoteContent = '';
   selectedTagIds: number[] = [];
+
+  //pour les tags
   newTagName = '';
   newTagColor = '#FFFFFF';
   tagError = '';
+
+  //pour modifier la note
   editingNote: Note | null = null;
   editingTagIds: number[] = [];
-  searchQuery = '';
-  isSorted = false;
+
+
+
 
   constructor(private storageService: StorageService) {}
 

@@ -1,6 +1,14 @@
+<!-- C'est le component permettant d'afficher donc la liste des tags-->
+
 <div class="main-container">
+
+
+  <!-- affichage + recherche -->
   <div class="notes-section">
     <h2>Mes Notes</h2>
+
+    <!-- barre de recherche -->
+
     <div class="search-container">
       <input
         type="text"
@@ -11,13 +19,20 @@
       <button (click)="sortNotes()">Trier</button>
     </div>
 
+    <!-- affichage des notes en récupérant les filtres de recherche -->
+
     @for (note of filteredNotes; track note.id) {
     <app-note [note]="note" [tags]="tags" (click)="editNote($event)" (doubleClick)="deleteNote($event)"></app-note>
     }
   </div>
 
+
+  <!-- edition des notes -->
   <div class="form-section">
     <h2>{{ editingNote ? 'Modifier la note' : 'Créer une note' }}</h2>
+
+    <!-- formulaire de modifs-->
+
     <form (ngSubmit)="editingNote ? updateNote() : createNote()">
       <div class="form-group">
         <label for="title">Titre :</label>
