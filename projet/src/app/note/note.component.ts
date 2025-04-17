@@ -21,6 +21,7 @@ export class NoteComponent {
   tags = input.required<{ id: number; name: string; color: string }[]>();
 
   //on gère les evenements clique simple et dbl clique (ça prend l'id de la note)
+
   @Output() click = new EventEmitter<number>();
   @Output() doubleClick = new EventEmitter<number>();
 

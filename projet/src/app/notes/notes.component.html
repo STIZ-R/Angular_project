@@ -10,20 +10,17 @@
     <!-- barre de recherche -->
 
     <div class="search-container">
-      <input
-        type="text"
-        [(ngModel)]="searchQuery"
-        (input)="filterNotes()"
-        placeholder="Rechercher par titre, contenu ou tags..."
-      />
+      <input type="text" [(ngModel)]="searchQuery" (input)="filterNotes()" placeholder="Rechercher par titre, contenu ou tags..."/>
       <button (click)="sortNotes()">Trier</button>
     </div>
 
     <!-- affichage des notes en récupérant les filtres de recherche -->
 
     @for (note of filteredNotes; track note.id) {
-    <app-note [note]="note" [tags]="tags" (click)="editNote($event)" (doubleClick)="deleteNote($event)"></app-note>
+      <app-note [note]="note" [tags]="tags" (click)="editNote($event)" (doubleClick)="deleteNote($event)"></app-note>
     }
+    @empty
+    { <p>Aucun résultat</p> }
   </div>
 
 
@@ -53,7 +50,7 @@
         <label for="tags">Sélectionner des tags :</label>
         <select multiple [(ngModel)]="selectedTagIds" name="tags" id="tags">
           @for (tag of tags; track tag.id) {
-          <option [value]="tag.id">{{ tag.name }} ({{ tag.color }})</option>
+              <option [value]="tag.id">{{ tag.name }}</option>
           }
         </select>
       </div>
@@ -64,13 +61,13 @@
         <input type="color" [(ngModel)]="newTagColor" name="newTagColor" />
         <button type="button" (click)="createTag()">Ajouter le tag</button>
         @if (tagError) {
-        <div class="error">{{ tagError }}</div>
+            <div class="error">{{ tagError }}</div>
         }
       </div>
 
       <button type="submit">{{ editingNote ? 'Mettre à jour' : 'Créer la note' }}</button>
       @if (editingNote) {
-      <button type="button" class="cancel" (click)="cancelEdit()">Annuler</button>
+          <button type="button" class="cancel" (click)="cancelEdit()">Annuler</button>
       }
     </form>
   </div>

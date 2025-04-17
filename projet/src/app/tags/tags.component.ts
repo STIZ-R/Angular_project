@@ -32,7 +32,7 @@ export class TagsComponent implements OnInit {
   }
 
   startAddTag(): void {
-    this.editing = { id: 0, name: '', color: '#000000' };
+    this.editing = { id: 0, name: '', color: '#FFFFFF' };
   }
 
   startEditTag(id: number): void {
@@ -51,12 +51,12 @@ export class TagsComponent implements OnInit {
     if (this.editing.id === 0) {
       const newTag = this.storageService.createTag(this.editing.name, this.editing.color);
       if (!newTag) {
-        alert('Tag déjà existant ou invalide !');
+        alert('Tag déjà existant');
         return;
       }
     } else {
       if (!this.storageService.updateTag(this.editing.id, this.editing.name, this.editing.color)) {
-        alert('Nom déjà utilisé ou invalide !');
+        alert('Nom déjà utilisé');
         return;
       }
     }

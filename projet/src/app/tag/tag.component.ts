@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './tag.component.html',
   styleUrls: ['./tag.component.css']
 })
+
 export class TagComponent {
   id = input.required<number>();
   name = input.required<string>();
