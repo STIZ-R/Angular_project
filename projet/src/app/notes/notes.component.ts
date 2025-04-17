@@ -176,7 +176,7 @@ export class NotesComponent implements OnInit {
     this.newNoteContent = '';
     this.selectedTagIds = [];
     this.newTagName = '';
-    this.newTagColor = '#000000';
+    this.newTagColor = '#FFFFFF';
     this.tagError = '';
     this.editingNote = null;
     this.editingTagIds = [];

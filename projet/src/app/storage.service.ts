@@ -41,7 +41,7 @@ export class StorageService {
     const newTag: Tag = {
       id: tags.length ? Math.max(...tags.map(t => t.id)) + 1 : 1,
       name: trimmedName,
-      color
+      color //de base à FFFFFF
     };
 
     this.saveTags([...tags, newTag]);
